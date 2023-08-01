@@ -1,17 +1,18 @@
 import customtkinter as ctk
+from connector import DictionaryConnector
 
-# Configurações da janela:
+# Inicialização do app
 app = ctk.CTk()
-app.title("Auto Anki")
-app.geometry("800x700")
+connector = DictionaryConnector()
 
-# Botões:
-button_send_words = ctk.CTkButton(app, text="guardar") 
-button_main_function =  ctk.CTkButton(app, text="mineiração")
-button_view_list =  ctk.CTkButton(app, text="lista de palavras")
+# Botões
+button_save_words = ctk.CTkButton(app, text="GUARDAR")
+button_begin_cards = ctk.CTkButton(app, text="CRIAR CARDS")
+button_word_list = ctk.CTkButton(app, text="PALAVRAS GUARDADAS")
 
-
-
-
+# Posicionamento dos botões
+button_save_words.pack()
+button_begin_cards.pack()
+button_word_list.pack()
 
 app.mainloop()
