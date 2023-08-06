@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "auto-anki"
+version = "0.0.0"
+description = "Um projeto de automação da criação de cards do anki com interface"
+authors = ["Thomas Passos <tm123br@live.com>"]
+license = "Apache License"
+readme = "README.md"
+packages = [{include = "auto_anki"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+customtkinter = "^5.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
