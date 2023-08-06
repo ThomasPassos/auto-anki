@@ -31,7 +31,6 @@ class DictionaryConnector:
             word = Word(word_tuple[0], word_tuple[1])
             self.words.append(word)
 
-    # TODO - Teste
     def _get_json_list(self):
         """
         Get the json with word information by the Free Dictionary API.
@@ -48,7 +47,6 @@ class DictionaryConnector:
                 word_json = request.json()
                 self.json_list.append(word_json)
 
-    # TODO - Teste
     def _get_word_atributes(self):
         """
         Update the Word object atributes phonetic and meanings,
@@ -83,5 +81,5 @@ class DictionaryConnector:
         """
         self._generate_word_object(self.word_list)
         self._get_json_list()
-        self.get_word_atributes()
+        self._get_word_atributes()
         return self.words

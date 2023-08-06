@@ -1,4 +1,5 @@
 import customtkinter as ctk
+
 from connector import DictionaryConnector
 
 # Inicialização do app
