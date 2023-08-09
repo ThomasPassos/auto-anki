@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 import requests
 
@@ -15,15 +15,19 @@ class Word:
 
 # Classe responsável por se conectar e puxar os dados da API:
 class DictionaryConnector:
+    '''
+    Class used to connect with the Free Dictionary API to 
+    get the data about words in word_list.
+    '''
     data_model = List[Tuple[str, str]]
     __dictionary_path = "https://api.dictionaryapi.dev/api/v2/entries/en/"
-    
+
     def __init__(self, word_list: data_model):
         self.word_list = word_list
-        self.json_list = []
-        self.words = []
+        self.json_list: List[Dict] = []
+        self.words: List[Word] = []
 
-    def _generate_word_object(self, word_list: data_model):
+    def __generate_word_object(self, word_list: data_model):
         """
         Receive a data_model and create Word objects with the data.
         """
@@ -31,7 +35,7 @@ class DictionaryConnector:
             word = Word(word_tuple[0], word_tuple[1])
             self.words.append(word)
 
-    def _get_json_list(self):
+    def __get_json_list(self):
         """
         Get the json with word information by the Free Dictionary API.
         """
@@ -47,7 +51,7 @@ class DictionaryConnector:
                 word_json = request.json()
                 self.json_list.append(word_json)
 
-    def _get_word_atributes(self):
+    def __get_word_atributes(self):
         """
         Update the Word object atributes phonetic and meanings,
         the latter with a tuple containing meaning and example.
@@ -79,7 +83,7 @@ class DictionaryConnector:
             return:
                 words: [Word(word="water", word_class="noun", ...), ...].
         """
-        self._generate_word_object(self.word_list)
-        self._get_json_list()
-        self._get_word_atributes()
+        self.__generate_word_object(self.word_list)
+        self.__get_json_list()
+        self.__get_word_atributes()
         return self.words

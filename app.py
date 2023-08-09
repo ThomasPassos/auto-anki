@@ -1,10 +1,7 @@
 import customtkinter as ctk
 
-from connector import DictionaryConnector
-
 # Inicialização do app
 app = ctk.CTk()
-connector = DictionaryConnector()
 
 # Botões
 button_save_words = ctk.CTkButton(app, text="GUARDAR")
